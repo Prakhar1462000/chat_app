@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Real-time Chat</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Chat App</h1>
+
+    <div class="chat-container" id="chatContainer">
+      <!-- Chat messages will be appended here -->
+    </div>
+
+    <form class="input-form" onsubmit="sendMessage(event)">
+      <input type="text" id="messageInput" placeholder="Type your message" />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script>
+    // Function to send a message
+    function sendMessage(event) {
+      event.preventDefault();
+
+      // Get the input element
+      const messageInput = document.getElementById('messageInput');
+
+      // Get the value of the input
+      const message = messageInput.value;
+
+      // Create a new chat message element
+      const chatMessage = document.createElement('div');
+      chatMessage.classList.add('chat-message', 'user-message');
+      chatMessage.textContent = message;
+
+      // Append the chat message to the chat container
+      const chatContainer = document.getElementById('chatContainer');
+      chatContainer.appendChild(chatMessage);
+
+      // Clear the input value
+      messageInput.value = '';
+
+      // Scroll to the bottom of the chat container
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+  </script>
+</body>
+</html>
